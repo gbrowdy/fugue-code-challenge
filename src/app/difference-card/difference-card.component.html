@@ -1,0 +1,1 @@
+<img [src]="card.src" (click)="!disabled ? imageChosen.emit(card) : null" [ngClass]="{'red-border': wrongClick, 'green-border': rightClick}"/>

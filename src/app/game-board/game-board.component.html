@@ -1,0 +1,33 @@
+<div class="game-board">
+  <div class="game-info">
+    <h3>Round {{ round }} of 5</h3>
+    <h3>Time Left: {{ timer }}</h3>
+    <h3>Points: {{ points }}</h3>
+    <button *ngIf="!gameStarted || round === 5" (click)="startNewGame()" [disabled]="loading">Start New Game</button>
+    <button *ngIf="gameStarted && round < 5 && clicked" (click)="nextRound()">Next Round</button>
+    <div class="message" *ngIf="clicked">
+
+    </div>
+  </div>
+  <div class="card-area" *ngIf="!loading">
+    <app-difference-card *ngFor="let card of cards"
+                         [card]="card"
+                         [rightClick]="clicked && card.correct"
+                         [wrongClick]="clicked && !card.correct"
+                         [disabled]="clicked"
+                         (imageChosen)="checkCard($event)">
+    </app-difference-card>
+  </div>
+  <div class="loading" *ngIf="loading">
+    <h2>Loading Images</h2>
+    <br />
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+  </div>
+</div>
+
+
