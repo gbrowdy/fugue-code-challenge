@@ -1,27 +1,25 @@
 # FugueCodeChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+To install packages, run `npm install`.
 
-## Development server
+To start server, run `npm start`, and then you can navigate to `localhost:8080`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Notes
 
-## Code scaffolding
+- I try not to use 3rd party packages in coding challenges. 
+In this particular challenge I built my own lazy-loading mechanism for the images.
+It's not perfect, but it gets the job done.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- I didn't get around to user messaging, like explicitly telling the user 
+if they are right or wrong and how many points they got,
+or explaining rules, etc.
 
-## Build
+- Because this is a small app, I didn't use any Flux data architecture 
+or RxJs Observable streams. The lazy loading might have had cleaner code 
+if I had used Observables in a separate service.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Known Issues
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- The lazy loading module runs under an implicit assumption that it will finish loading
+all the images by the time the user finishes 5 rounds and starts a new game. 
+Because of this, there may be visible image loading if a user were to race through the game.
